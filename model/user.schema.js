@@ -14,6 +14,13 @@ exports.UserSchema = Schema({
         type: Number,
         default: Date.now(),
     },
-    userImage: String,
+    description: {
+        type: String,
+        default: '',
+    },
+    userImage: {
+        type: String,
+        default: '',
+    },
 }, { collection: "Users_Project3" });
 
