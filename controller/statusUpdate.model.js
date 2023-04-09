@@ -51,8 +51,8 @@ function getStatusUpdateById(statusUpdateId) {
 /**
  * Updates the provided properties of the identified status update
  * 
- * @param {string} statusUpdateId The unique ID by which the status
- *                                update will be retrieved
+ * @param {string} statusUpdateId    The unique ID by which the status
+ *                                   update will be retrieved
  * @param {any} modifiedStatusUpdate The properties of the status
  *                                   update to be modified
  * 

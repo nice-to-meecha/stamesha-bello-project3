@@ -38,8 +38,8 @@ function getUserById(userId) {
 /**
  * Updates the provided properties of the identified user
  * 
- * @param {string} userId The unique ID by which the user will be
- *                        retrieved
+ * @param {string} userId      The unique ID by which the user will be
+ *                             retrieved
  * @param {any} updatedContent The properties of the user to be updated
  * 
  * @returns void (Promise)

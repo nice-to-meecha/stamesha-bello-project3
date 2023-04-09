@@ -28,7 +28,7 @@ function getImageById(imageId) {
 /**
  * Updates the image matching the provided, unique ID
  * 
- * @param {string} imageId The ID of the image to be updated
+ * @param {string} imageId   The ID of the image to be updated
  * @param {any} updatedImage The image data that will replace the current
  *                           image
  * 
