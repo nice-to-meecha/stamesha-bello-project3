@@ -36,6 +36,18 @@ function getUserById(userId) {
 }
 
 /**
+ * Finds and returns user data, according to the provided username
+ * 
+ * @param {string} userId The username by which the user will be
+ *                        retrieved
+ * 
+ * @returns The user with the matching identifier (Promise)
+ */
+function getUserByUsername(username) {
+    return UserModel.findOne({ username }).exec();
+}
+
+/**
  * Updates the provided properties of the identified user
  * 
  * @param {string} userId      The unique ID by which the user will be
@@ -45,12 +57,13 @@ function getUserById(userId) {
  * @returns void (Promise)
  */
 function updateUser(userId, updatedContent) {
-    return UserModel.findOneAndUpdate({ _id: userId }, updatedContent).exec();
+    return UserModel.findOneAndUpdate({ _id: userId }, updatedContent, { runValidators: true }).exec();
 }
 
 module.exports = {
     createUser,
     getAllUsers,
     getUserById,
+    getUserByUsername,
     updateUser,
 }

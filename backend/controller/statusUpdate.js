@@ -66,3 +66,5 @@ router.delete('/:statusUpdateId', (req, res) => {
             res.status(404).send(err);
         })
 });
+
+module.exports = router;

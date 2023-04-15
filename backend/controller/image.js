@@ -45,3 +45,5 @@ router.delete("/:imageId", (req, res) => {
             res.status(404).send(err);
         });
 });
+
+module.exports = router;

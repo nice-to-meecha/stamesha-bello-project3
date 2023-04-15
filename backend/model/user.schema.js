@@ -5,10 +5,12 @@ exports.UserSchema = Schema({
         type: String,
         required: true,
         unique: true,
+        minLength: 2,
     },
     password: {
         type: String,
         required: true,
+        minLength: 8,
     },
     timeJoined: {
         type: Number,
