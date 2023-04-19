@@ -2,8 +2,8 @@ const router = require("express").Router();
 const UserModel = require("./user.model");
 
 router.get('/isLoggedIn', (req, res) => {
-    const { username } = req.cookies;
-    res.send({ username });
+    const { userId } = req.cookies;
+    res.send({ userId });
 });
 
 router.get('/', (req, res) => {
@@ -31,7 +31,9 @@ router.post('/', (req, res) => {
     const user = req.body;
     UserModel.createUser(user)
         .then(data => {
-            res.send(`User created successfully.\n${data}`);
+            res.cookie("userId", data._id);
+            // res.send(`User created successfully.\n${data}`);
+            res.send(data);
         })
         .catch(err => {
             res.status(404).send(err);
@@ -61,7 +63,7 @@ router.post('/logIn', (req, res) => {
                 res.status(401).send(`Password is incorrect`);
 
             } else {
-                res.cookie("username", username);
+                res.cookie("userId", data._id);
                 res.send(data);
             }
                 
@@ -72,7 +74,9 @@ router.post('/logIn', (req, res) => {
 });
 
 router.post('/logOut', (req, res) => {
-    res.cookie("username", null, { maxAge: 0 });
+    res.cookie("userId", "", {
+        maxAge: 0,
+    });
     res.send("User successfully logged out");
 });
 
