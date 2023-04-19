@@ -16,6 +16,10 @@ export default function Navbar(props) {
         setQuery(event.target.value);
     }
 
+    function search() {
+        navigate(`/search${query ? `?query=${query}` : ""}`);
+    }
+
     function logOut() {
         axios.post("/api/users/logout")
             .then(data => {
@@ -65,6 +69,10 @@ export default function Navbar(props) {
     return (<div>
         <Link to="/" className="home-link">Tweeter</Link>
         {loginLogoutButtons}
-        <input className="search-bar" value={query} onInput={updateQuery} type="search" />
+        <div>
+            <input className="search-bar" value={query} onInput={updateQuery} type="search" />
+            {/* TODO - Replace with magnifying glass or other search icon */}
+            <button onClick={search}>Search</button>
+        </div>
     </div>);
 }

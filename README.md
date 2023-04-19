@@ -8,3 +8,5 @@ Fake Twitter... or is it?
     - https://docs.npmjs.com/creating-a-package-json-file
 - Mongoose built-in validators
     - https://mongoosejs.com/docs/validation.html#built-in-validators
+- Accessing query parameters
+    - https://www.codingdeft.com/posts/react-get-query-and-url-parameters/
