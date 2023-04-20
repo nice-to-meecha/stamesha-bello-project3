@@ -20,7 +20,7 @@ export default function Navbar(props) {
         navigate(`/search${query ? `?query=${query}` : ""}`);
     }
 
-    function logOut() {
+    async function logOut() {
         axios.post("/api/users/logout")
             .then(data => {
                 console.log(data);
@@ -32,7 +32,7 @@ export default function Navbar(props) {
             });
     }
 
-    useEffect(() => {
+    useEffect(async () => {
         axios.get("/api/users/isLoggedIn")
             .then(data => {
                 console.log("Is Logged In", data);

@@ -10,7 +10,7 @@ export default function LoginAccount(props) {
     const { setCurrUser } = globalValues;
     const navigate = useNavigate();
 
-    function login(username, password) {
+    async function login(username, password) {
         axios.post("/api/users/login", { username, password })
             .then(data => {
                 console.log(data);
