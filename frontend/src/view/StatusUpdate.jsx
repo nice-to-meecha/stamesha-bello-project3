@@ -34,7 +34,7 @@ export default function StatusUpdate(props) {
         setEditing(true);   
     }
 
-    async function deleteStatusUpdate() {
+    function deleteStatusUpdate() {
         axios.delete(`/api/statusUpdates/${statusUpdateId}`)
             .then(data => {
                 console.log(data);
@@ -57,7 +57,7 @@ export default function StatusUpdate(props) {
                     userImage={userImage}
                     text={text}
                 />
-                : {staticUserContent}
+                : staticUserContent
             }
         </Link>
     </div>);

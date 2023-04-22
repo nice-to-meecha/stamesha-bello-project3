@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import StatusUpdate from "./StatusUpdate";
 
@@ -6,7 +6,7 @@ export default function StatusUpdateList(props) {
     const { users } = props;
     const [ statusUpdateList, setStatusUpdateList ] = useState([]);
 
-    useEffect(async () => {
+    useEffect(() => {
         const usernameToUser = {}
         users.forEach(user => {
             usernameToUser[user.username] = user;

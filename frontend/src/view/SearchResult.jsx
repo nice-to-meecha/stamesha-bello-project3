@@ -19,7 +19,7 @@ export default function SearchResult(props) {
         ));
     }
 
-    useEffect(async () => {
+    useEffect(() => {
         axios.get("/api/users/")
         .then(data => {
             if (query) {

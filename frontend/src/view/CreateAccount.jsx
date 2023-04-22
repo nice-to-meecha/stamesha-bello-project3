@@ -11,7 +11,7 @@ export default function CreateAccount(props) {
     const { setCurrUser } = globalValues;
     const navigate = useNavigate();
 
-    async function createAccount(username, password) {
+    function createAccount(username, password) {
         axios.post("/api/users/", { username, password })
             .then(data => {
                 console.log(data);
