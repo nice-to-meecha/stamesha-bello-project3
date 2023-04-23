@@ -1,0 +1,20 @@
+.status-update {
+    position: relative;
+    margin-top: 1%;
+}
+
+.status-update-background {
+    background-color: lightgray;
+    border-radius: 5px;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -3;
+}
+
+/*
+    TODO: Make width of other contents of status update < 100%,
+          so can click background that's behind them
+*/

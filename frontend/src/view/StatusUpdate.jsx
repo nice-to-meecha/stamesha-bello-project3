@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { globalContext } from "./GlobalContext";
 import ModifyStatusUpdate from "./ModifyStatusUpdate";
 import UserLink from "./UserLink";
+import "../css/StatusUpdate.css";
 
 export default function StatusUpdate(props) {
     const { 
@@ -13,6 +14,7 @@ export default function StatusUpdate(props) {
             timestamp,
             text,
             imageUrl,
+            refresh,
         } = props;
     const { currUser } = useContext(globalContext);
     const staticUserContent = (<div>
@@ -31,7 +33,7 @@ export default function StatusUpdate(props) {
     </div>)
 
     function editStatusUpdate() { 
-        setEditing(true);   
+        setEditing(true);
     }
 
     function deleteStatusUpdate() {
@@ -44,21 +46,39 @@ export default function StatusUpdate(props) {
             })
     }
 
-    return (<div>
+    function modifyStatusUpdate(text, imageUrl) {
+        axios.put(
+            `/api/statusUpdates/${statusUpdateId}`,
+            { username: currUser.username, text, imageUrl }
+        )
+                .then(data => {
+                    console.log(data);
+                })
+                .then(() => {
+                    refresh();
+                })
+                .catch(err => {
+                    console.error(err);
+                })
+    }
+
+    return (<div className="status-update">
         <Link to={`/users/${username}`}>
-            <UserLink
-                username={username}
-                userImage={userImage}
-            />
-            {currUser.username === username && dropDownMenu}
-            <div>{timestamp}</div>
-            {editing
-                ? <ModifyStatusUpdate
-                    userImage={userImage}
-                    text={text}
-                />
-                : staticUserContent
-            }
+            <div className="status-update-background" />
         </Link>
+        <UserLink
+            username={username}
+            userImage={userImage}
+        />
+        {currUser.username === username && dropDownMenu}
+        <div>{timestamp}</div>
+        {editing
+            ? <ModifyStatusUpdate
+                imageUrl={imageUrl}
+                text={text}
+                submit={modifyStatusUpdate}
+            />
+            : staticUserContent
+        }
     </div>);
 }

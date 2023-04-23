@@ -6,12 +6,12 @@ import StatusUpdateList from "./StatusUpdateList";
 
 export default function Feed(props) {
     const [users, setUsers] = useState([]);
+    const [statusUpdateListKey, setStatusUpdateListKey] = useState(true)
     const { currUser } = useContext(globalContext);
 
     useEffect(() => {
         axios.get("/api/users")
             .then(data => {
-                console.log("Feed Users", data.data)
                 setUsers([...data.data]);
             })
             .catch(err => {
@@ -19,8 +19,15 @@ export default function Feed(props) {
             })
     }, [])
 
+    function refreshStatusUpdates() {
+        setStatusUpdateListKey(!statusUpdateListKey);
+    }
+
     return (<div>
-        {currUser && <CreateStatusUpdate />}
-        <StatusUpdateList users={users} />
+        {currUser && <CreateStatusUpdate refresh={setStatusUpdateListKey} />}
+        <StatusUpdateList
+            users={users}
+            key={statusUpdateListKey}
+        />
     </div>);
 }

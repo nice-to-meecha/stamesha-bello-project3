@@ -1,17 +1,37 @@
 import React, { useState } from "react";
-import ModifyUserImage from "./ModifyUserImage";
+import ModifyStatusUpdateImage from "./ModifyStatusUpdateImage";
 
 export default function ModifyStatusUpdate(props) {
-    const { userImage, text } = props;
+    const { imageUrl, text, submit } = props;
+    const [url, setUrl] = useState(imageUrl);
+    const [memo, setMemo] = useState(text);
+
+    function updateMemo(event) {
+        setMemo(event.target.value);
+    }
+
+    function updateImageUrl(event) {
+        setUrl(event.target.value);
+    }
+
+    function submitInfo() {
+        setMemo("");
+        setUrl("");
+        submit(memo, url);
+    }
 
     return (<div>
-        <ModifyUserImage userImage={userImage} />
+        <ModifyStatusUpdateImage
+            imageUrl={url}
+            updateImageUrl={updateImageUrl}
+        />
         <textarea
-            defaultValue={text}
+            value={memo}
             rows={5}
             cols={100}
             name="modifyStatusUpdateText"
+            onInput={updateMemo}
         />
-        <button>Submit (Currently does nothing)</button>
+        <button onClick={submitInfo}>Submit</button>
     </div>);
 }

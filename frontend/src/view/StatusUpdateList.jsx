@@ -3,7 +3,7 @@ import axios from "axios";
 import StatusUpdate from "./StatusUpdate";
 
 export default function StatusUpdateList(props) {
-    const { users } = props;
+    const { users, refresh } = props;
     const [ statusUpdateList, setStatusUpdateList ] = useState([]);
 
     useEffect(() => {
@@ -15,15 +15,17 @@ export default function StatusUpdateList(props) {
             .then(data => {
                 setStatusUpdateList([...data.data
                     .sort((update1, update2) => update2.timestamp - update1.timestamp)
-                    .map(statusUpdate => {
+                    .map((statusUpdate, i) => {
                         const user = usernameToUser[statusUpdate.username];
                         return (<StatusUpdate
                             statusUpdateId={statusUpdate._id}
-                            username={user.username}
-                            userImage={user.userImage}
+                            username={user?.username || ""}
+                            userImage={user?.userImage || ""}
                             timestamp={statusUpdate.timestamp}
                             text={statusUpdate.text}
                             imageUrl={statusUpdate.imageUrl}
+                            refresh={refresh}
+                            key={i}
                         />);
                     })]);
             })
