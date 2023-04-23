@@ -16,6 +16,17 @@ router.get('/', (req, res) => {
         });
 });
 
+router.get("/username/:username", (req, res) => {
+    const { username } = req.params;
+    UserModel.getUserByUsername(username)
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            res.status(404).send(err);
+        });
+});
+
 router.get("/:userId", (req, res) => {
     const { userId } = req.params;
     UserModel.getUserById(userId)

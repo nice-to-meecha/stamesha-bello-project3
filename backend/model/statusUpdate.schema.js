@@ -13,5 +13,8 @@ exports.StatusUpdateSchema = Schema({
         type: Number,
         default: Date.now(),
     },
-    imageUrl: String,
+    imageUrl: {
+        type: String,
+        default: '',
+    },
 }, { collection: "StatusUpdates_Project3" });
