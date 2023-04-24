@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router";
+import { HashLink } from "react-router-hash-link";
+import { useLocation, useNavigate, useParams } from "react-router";
 import { globalContext } from "./GlobalContext";
 import axios from "axios";
 import "../css/Navbar.css";
@@ -10,6 +11,7 @@ export default function Navbar(props) {
     const [ loginLogoutButtons, setLoginLogoutButtons ] = useState((<></>));
     const globalValues = useContext(globalContext);
     const { currUser, setCurrUser } = globalValues;
+    const { username: usernameParam } = useParams();
     const navigate = useNavigate();
 
     function updateQuery(event) {
@@ -30,6 +32,15 @@ export default function Navbar(props) {
             .catch(err => {
                 console.error(err);
             });
+    }
+
+    function createEntry() {
+        let path = '/';
+        if (usernameParam) {
+            path = `/users/${usernameParam}`;
+        }
+
+        return `${path}#create-status-update-memo`;
     }
 
     useEffect(() => {
@@ -61,7 +72,9 @@ export default function Navbar(props) {
             </div>))
         } else {
             setLoginLogoutButtons(<div>
-                Hey, {currUser.username}. <button onClick={logOut}>Log Out</button>
+                Hey, {currUser.username}.
+                <HashLink to={createEntry()}>Create Entry</HashLink>
+                <button onClick={logOut}>Log Out</button>
             </div>)
         }
     }, [globalValues.currUser]);

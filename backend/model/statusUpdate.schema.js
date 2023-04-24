@@ -11,7 +11,10 @@ exports.StatusUpdateSchema = Schema({
     },
     timestamp: {
         type: Number,
-        default: Date.now(),
+        default: Date.now,
+    },
+    lastEdited: {
+        type: Number,
     },
     imageUrl: {
         type: String,

@@ -16,6 +16,8 @@ export default function CreateAccount(props) {
             .then(data => {
                 console.log(data);
                 setCurrUser(data.data);
+            })
+            .then(data => {
                 navigate('/');
             })
             .catch(err => {

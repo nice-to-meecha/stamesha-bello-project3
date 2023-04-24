@@ -14,6 +14,7 @@ export default function StatusUpdate(props) {
             timestamp,
             text,
             imageUrl,
+            lastEdited,
             refresh,
         } = props;
     const { currUser } = useContext(globalContext);
@@ -41,6 +42,9 @@ export default function StatusUpdate(props) {
             .then(data => {
                 console.log(data);
             })
+            .then(() => {
+                refresh();
+            })
             .catch(err => {
                 console.error(err);
             })
@@ -49,7 +53,12 @@ export default function StatusUpdate(props) {
     function modifyStatusUpdate(text, imageUrl) {
         axios.put(
             `/api/statusUpdates/${statusUpdateId}`,
-            { username: currUser.username, text, imageUrl }
+            { 
+                username: currUser.username,
+                text,
+                imageUrl,
+                lastEdited: Date.now(),
+            }
         )
                 .then(data => {
                     console.log(data);
@@ -70,8 +79,9 @@ export default function StatusUpdate(props) {
             username={username}
             userImage={userImage}
         />
-        {currUser.username === username && dropDownMenu}
-        <div>{timestamp}</div>
+        {currUser?.username === username && dropDownMenu}
+        <div>Created: {timestamp}</div>
+        {lastEdited && <div>Last Edited: {lastEdited}</div>}
         {editing
             ? <ModifyStatusUpdate
                 imageUrl={imageUrl}

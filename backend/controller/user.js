@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const jwt = require("jsonwebtoken");
 const UserModel = require("./user.model");
 
 router.get('/isLoggedIn', (req, res) => {
@@ -40,10 +41,13 @@ router.get("/:userId", (req, res) => {
 
 router.post('/', (req, res) => {
     const user = req.body;
+    if (user.password) {
+        user.password = jwt.sign(user.password, process.env.SECRET);
+    }
+
     UserModel.createUser(user)
         .then(data => {
-            res.cookie("userId", data._id);
-            // res.send(`User created successfully.\n${data}`);
+            res.cookie("userId", data._id, { httpOnly: true });
             res.send(data);
         })
         .catch(err => {
@@ -67,19 +71,21 @@ router.post('/logIn', (req, res) => {
     const { username, password } = req.body;
     UserModel.getUserByUsername(username)
         .then(data => {
+            const decryptedPassword = jwt.verify(data.password, process.env.SECRET);
             if (!data) {
                 res.status(404).send(`Username ${username} not found`);
 
-            } else if (data.password !== password) {
+            } else if (decryptedPassword !== password) {
                 res.status(401).send(`Password is incorrect`);
 
             } else {
-                res.cookie("userId", data._id);
+                res.cookie("userId", data._id, { httpOnly: true });
                 res.send(data);
             }
                 
         })
         .catch(err => {
+            console.log(err);
             res.status(404).send(`${err}`);
         });
 });
@@ -87,6 +93,7 @@ router.post('/logIn', (req, res) => {
 router.post('/logOut', (req, res) => {
     res.cookie("userId", "", {
         maxAge: 0,
+        httpOnly: true,
     });
     res.send("User successfully logged out");
 });

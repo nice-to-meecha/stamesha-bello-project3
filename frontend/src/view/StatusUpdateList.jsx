@@ -24,6 +24,7 @@ export default function StatusUpdateList(props) {
                             timestamp={statusUpdate.timestamp}
                             text={statusUpdate.text}
                             imageUrl={statusUpdate.imageUrl}
+                            lastEdited={statusUpdate.lastEdited}
                             refresh={refresh}
                             key={i}
                         />);

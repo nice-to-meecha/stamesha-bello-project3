@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ModifyStatusUpdateImage from "./ModifyStatusUpdateImage";
 
 export default function ModifyStatusUpdate(props) {
-    const { imageUrl, text, submit } = props;
+    const { imageUrl, text, submit, memoId } = props;
     const [url, setUrl] = useState(imageUrl);
     const [memo, setMemo] = useState(text);
 
@@ -31,6 +31,7 @@ export default function ModifyStatusUpdate(props) {
             cols={100}
             name="modifyStatusUpdateText"
             onInput={updateMemo}
+            id={memoId ? memoId : "modify-status-update-memo"}
         />
         <button onClick={submitInfo}>Submit</button>
     </div>);

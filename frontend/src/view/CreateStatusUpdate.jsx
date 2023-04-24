@@ -6,6 +6,7 @@ import { globalContext } from "./GlobalContext";
 export default function CreateStatusUpdate(props) {
     const { refresh } = props;
     const { currUser } = useContext(globalContext);
+    const memoId = "create-status-update-memo";
 
     function postStatusUpdate(text, imageUrl) {
         axios.post(
@@ -28,6 +29,7 @@ export default function CreateStatusUpdate(props) {
             imageUrl={""}
             text={""}
             submit={postStatusUpdate}
+            memoId={memoId}
         />
     </div>);
 }

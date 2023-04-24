@@ -24,10 +24,11 @@ export default function Feed(props) {
     }
 
     return (<div>
-        {currUser && <CreateStatusUpdate refresh={setStatusUpdateListKey} />}
+        {currUser && <CreateStatusUpdate refresh={refreshStatusUpdates} />}
         <StatusUpdateList
             users={users}
             key={statusUpdateListKey}
+            refresh={refreshStatusUpdates}
         />
     </div>);
 }

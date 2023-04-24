@@ -2,40 +2,65 @@ import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router";
 import CreateStatusUpdate from "./CreateStatusUpdate";
+import Description from "./Description";
 import StatusUpdateList from "./StatusUpdateList";
 import { globalContext } from "./GlobalContext";
 
 export default function UserPage(props) {
     const { username } = useParams();
-const [user, setUser] = useState([]);
+    const [user, setUser] = useState(undefined);
     const [statusUpdateListKey, setStatusUpdateListKey] = useState(true);
     const { currUser } = useContext(globalContext);
 
     useEffect(() => {
+        getUser();
+    }, [])
+
+    function getUser() {
         axios.get(`/api/users/username/${username}`)
             .then(data => {
-                console.log("UserPage user", data.data)
-                setUser([data.data]);
+                console.log("UserPage user", data.data);
+                setUser(data.data);
             })
             .catch(err => {
                 console.error(err)
             })
-    }, [])
+    }
 
     function refreshStatusUpdates() {
         setStatusUpdateListKey(!statusUpdateListKey);
     }
 
-    if (!user.length) {
+    function modifyDescription(description) {
+        axios.put(`/api/users/${user._id}`, { user, description })
+            .then(data => {
+                console.log(data);
+            })
+            .then(data => {
+                getUser();
+            })
+            .catch(err => {
+                console.error(err);
+            })
+    }
+
+    if (!user) {
         return (<div>{username} isn't an existing account</div>)
     }
 
     return (<div>
-        {username}'s User Page!
+        <div>{user.userImage}</div>
+        <div>{user.username}</div>
+        <div>Time Joined {user.timeJoined}</div>
+        <Description
+            description={user.description}
+            submit={modifyDescription}
+        />
         {currUser?.username === username && <CreateStatusUpdate refresh={refreshStatusUpdates} />}
         <StatusUpdateList
-            users={user}
+            users={[user]}
             key={statusUpdateListKey}
+            refresh={refreshStatusUpdates}
         />
     </div>);
 }

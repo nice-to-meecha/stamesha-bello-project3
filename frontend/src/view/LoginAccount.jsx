@@ -15,6 +15,8 @@ export default function LoginAccount(props) {
             .then(data => {
                 console.log(data);
                 setCurrUser(data.data);
+            })
+            .then(data => {
                 navigate('/');
             })
             .catch(err => {
