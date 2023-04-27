@@ -51,8 +51,11 @@ Write-up
     - https://blog.logrocket.com/customizing-node-js-env-files/
 - Creating a package.json file
     - https://docs.npmjs.com/creating-a-package-json-file
-- Mongoose built-in validators
-    - https://mongoosejs.com/docs/validation.html#built-in-validators
+- Mongoose validators
+    - Built-in validators - https://mongoosejs.com/docs/validation.html#built-in-validators
+    - Running validator(s) on update - https://stackoverflow.com/questions/15627967/why-mongoose-doesnt-validate-on-update
+- Nested routes
+    - https://reactrouter.com/en/main/start/tutorial#nested-routes
 - Accessing query parameters
     - https://www.codingdeft.com/posts/react-get-query-and-url-parameters/
 - Creating a drop-down menu
@@ -63,7 +66,12 @@ Write-up
     - https://stackoverflow.com/questions/30112654/mongodb-timestamp-is-very-inaccurate-mongoose
 - Getting anchor element id
     - https://stackoverflow.com/questions/65404167/how-to-retrieve-the-parameter-after-a-hash-with-react-router-and-useparams-h
-- Using react-router-hash-link HashLink to recreate anchor functionality
-    - https://stackoverflow.com/questions/48223566/using-anchor-tags-in-react-router-4
-- HashLink auto-focuses on focusable elements
-    - https://www.npmjs.com/package/react-router-hash-link
+- react-router-hash-link
+    - Using HashLink to recreate anchor functionality - https://stackoverflow.com/questions/48223566/using-anchor-tags-in-react-router-4
+    - HashLink auto-focuses on focusable elements - https://www.npmjs.com/package/react-router-hash-link
+- File uploads
+    - Uploading files from users - https://www.filestack.com/fileschool/react/react-file-upload/
+    - Storing files on server side - https://www.filestack.com/fileschool/?post_type=post&p=10578
+    - Handling ENOENT with fs.createWriteStream - https://gist.github.com/casamia918/031199ff5e015c56f87088765b047526
+- Dynamically import images in React
+    - https://stackoverflow.com/questions/54033765/how-to-give-image-src-dynamically-in-react-js

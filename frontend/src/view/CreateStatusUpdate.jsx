@@ -9,6 +9,7 @@ export default function CreateStatusUpdate(props) {
     const memoId = "create-status-update-memo";
 
     function postStatusUpdate(text, imageUrl) {
+        console.log("Post text:", text, "url", imageUrl);
         axios.post(
             "/api/statusUpdates",
             { username: currUser.username || '', text, imageUrl }

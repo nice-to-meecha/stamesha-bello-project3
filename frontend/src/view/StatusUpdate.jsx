@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { globalContext } from "./GlobalContext";
+import Image from "./Image";
 import ModifyStatusUpdate from "./ModifyStatusUpdate";
 import UserLink from "./UserLink";
 import "../css/StatusUpdate.css";
@@ -18,11 +19,14 @@ export default function StatusUpdate(props) {
             refresh,
         } = props;
     const { currUser } = useContext(globalContext);
+    const [ editing, setEditing ] = useState(false);
     const staticUserContent = (<div>
-        <div>{imageUrl}</div>
+        <Image
+            src={imageUrl}
+            editing={editing}
+        />
         <div>{text}</div>
     </div>);
-    const [ editing, setEditing ] = useState(false);
 
     const dropDownMenu = (<div>
         {/* Replace "Drop-down Button" with hamburger icon (3 vertical dots/lines) */}
