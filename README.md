@@ -75,3 +75,5 @@ Write-up
     - Handling ENOENT with fs.createWriteStream - https://gist.github.com/casamia918/031199ff5e015c56f87088765b047526
 - Dynamically import images in React
     - https://stackoverflow.com/questions/54033765/how-to-give-image-src-dynamically-in-react-js
+- Remove all styling from links
+    - https://stackoverflow.com/questions/8919682/remove-all-styling-formatting-from-hyperlinks

@@ -1,7 +1,141 @@
+.navbar {
+    width: 100%;
+    min-height: fit-content;
+    height: 10%;
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 4;
+    background-color: #18191B;
+    align-items: center;
+}
+
+.home-button {
+    width: 25%;
+    margin-left: 1%;
+    color: white;
+    align-self: flex-end;
+}
+
+.navbar-options {
+    width: 75%;
+    display: flex;
+    justify-content: end;
+    column-gap: 5%;
+}
+
 .home-link {
-    font-size: x-large;
+    all: unset;
+    font-size: 5vw;
+    text-decoration: none;
+}
+
+.home-link:hover {
+    cursor: pointer;
+}
+
+.search-unit {
+    display: flex;
+    align-items: center;
+    column-gap: 1%;
+}
+
+.search-unit:hover input {
+    border-color:#F0803C;
+}
+
+.search-unit:hover svg {
+    color:#F0803C;
 }
 
 .search-bar {
-    border: 3px solid slateblue;
+    background-color: transparent;
+    border: 3px solid white;
+    color: white;
+    border-radius: 5px;
+    transition: border-color 0.5s;
+}
+
+.search-bar:hover {
+    border-color: #F0803C;
+}
+
+.search-bar:focus {
+    border-color: #F0803C;
+}
+
+.search-bar:focus-visible {
+    outline: none;
+}
+
+.search-submit-icon {
+    color: white;
+    font-size: 32px;
+    transition: color 0.5s;
+}
+
+.login-logout-buttons {
+    margin-right: 1%;
+}
+
+.login-buttons {
+    display: flex;
+    column-gap: 5%;
+    color: white;
+    width: 25%;
+    justify-content: end;
+}
+
+.login-buttons > a {
+    all: unset;
+    cursor: pointer;
+    border: 3px solid white;
+    border-radius: 5px;
+    padding: 2% 3%;
+    transition: all 0.5s;
+}
+
+.login-buttons > a:hover {
+    background-color: #F0803C;
+    color: black;
+}
+
+.logged-in-user-menu-button {
+    position: relative;
+    border-color: transparent;
+    padding: 10% 2%;
+    background-color: transparent;
+    color: white;
+}
+
+.logged-in-user-menu-button:hover > .user-menu {
+    display: flex;
+    color: black;
+}
+
+.user-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    display: none;
+    min-width: 100px;
+    flex-direction: column;
+    background-color: lightgray;
+    border: 2px solid white;
+    border-radius: 5px;
+}
+
+.user-menu > :is(button, a) {
+    all: unset;
+    width: calc(100% - 2%);
+    cursor: pointer;
+    padding: 5% 1%;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.user-menu > :is(button:hover, a:hover) {
+    background-color: lightslategray;
+    color: white;
 }

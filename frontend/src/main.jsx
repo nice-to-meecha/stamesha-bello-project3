@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider, BrowserRouter, Outlet } from "react-router-dom";
-import App from "./App";
+// import App from "./App";
 import Navbar from "./view/Navbar";
 import Feed from "./view/Feed";
 import LoginAccount from "./view/LoginAccount";
@@ -9,14 +9,17 @@ import CreateAccount from "./view/CreateAccount";
 import GlobalContext from "./view/GlobalContext";
 import SearchResult from "./view/SearchResult";
 import UserPage from "./view/UserPage";
-import "./index.css";
+import "./css/Global.css";
+// import "./index.css";
 
 const router = createBrowserRouter([
   {
       path: '/',
       element: (<div>
         <Navbar />
-        <Outlet />
+        <div className="outlet">
+          <Outlet />
+        </div>
       </div>),
       children: [
         {

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 import { useLocation, useNavigate, useParams } from "react-router";
 import { globalContext } from "./GlobalContext";
+import { HiOutlineMagnifyingGlassCircle } from "react-icons/hi2";
 import axios from "axios";
 import "../css/Navbar.css";
 
@@ -65,27 +66,37 @@ export default function Navbar(props) {
 
     useEffect(() => {
         if (!currUser) {
-            setLoginLogoutButtons((<div>
-                {/* TODO - Replace with either <Link> or <button> */}
-                <button><Link to="/logIn">Log In</Link></button>
-                <button><Link to="/signUp">Sign Up</Link></button>
+            setLoginLogoutButtons((<div className="login-logout-buttons login-buttons">
+                <Link to="/logIn">Log In</Link>
+                <Link to="/signUp">Sign Up</Link>
             </div>))
         } else {
-            setLoginLogoutButtons(<div>
-                Hey, {currUser.username}.
-                <HashLink to={createEntry()}>Create Entry</HashLink>
-                <button onClick={logOut}>Log Out</button>
+            setLoginLogoutButtons(<div className="login-logout-buttons">
+                <button className="logged-in-user-menu-button">
+                    {currUser.username}
+                    <div className="user-menu">
+                        <HashLink to={createEntry()}>Create Entry</HashLink>
+                        <button onClick={logOut}>Log Out</button>
+                    </div>
+                </button>
             </div>)
         }
     }, [globalValues.currUser]);
 
-    return (<div>
-        <Link to="/" className="home-link">Tweeter</Link>
-        {loginLogoutButtons}
-        <div>
-            <input className="search-bar" value={query} onInput={updateQuery} type="search" />
-            {/* TODO - Replace with magnifying glass or other search icon */}
-            <button onClick={search}>Search</button>
+    return (<div className="navbar">
+        <div className="home-button">
+            <Link to="/" className="home-link">Tweeter</Link>
+        </div>
+        <div className="navbar-options">
+            <div className="search-unit">
+                <input className="search-bar" value={query} onInput={updateQuery} type="search" />
+                {/* TODO - Replace with magnifying glass or other search icon */}
+                <HiOutlineMagnifyingGlassCircle
+                    className="search-submit-icon"
+                    onClick={search}
+                />
+            </div>
+            {loginLogoutButtons}
         </div>
     </div>);
 }
