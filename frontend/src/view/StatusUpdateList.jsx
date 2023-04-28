@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import StatusUpdate from "./StatusUpdate";
+import { globalContext } from "./GlobalContext";
+import { formatErrorMessage } from "../commonUtilities";
 import "../css/StatusUpdateList.css"
 
 export default function StatusUpdateList(props) {
     const { users, refresh } = props;
     const [ statusUpdateList, setStatusUpdateList ] = useState([]);
+    const { setError } = useContext(globalContext);
 
     useEffect(() => {
         const usernameToUser = {}
@@ -32,6 +35,7 @@ export default function StatusUpdateList(props) {
                     })]);
             })
             .catch(err => {
+                setError(formatErrorMessage(err.response?.data || ""));
                 console.error(err);
             })
     }, [users]);

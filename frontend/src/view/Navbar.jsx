@@ -4,6 +4,7 @@ import { HashLink } from "react-router-hash-link";
 import { useLocation, useNavigate, useParams } from "react-router";
 import { globalContext } from "./GlobalContext";
 import { HiOutlineMagnifyingGlassCircle } from "react-icons/hi2";
+import { formatErrorMessage } from "../commonUtilities";
 import axios from "axios";
 import "../css/Navbar.css";
 
@@ -11,11 +12,10 @@ export default function Navbar(props) {
     const [ query, setQuery ] = useState("");
     const [ loginLogoutButtons, setLoginLogoutButtons ] = useState((<></>));
     const globalValues = useContext(globalContext);
-    const { currUser, setCurrUser } = globalValues;
+    const { currUser, setCurrUser, setError } = globalValues;
     const { username: usernameParam } = useParams();
     const navigate = useNavigate();
     const { pathname } = useLocation();
-    const [ currentAccountPage, setCurrentAccountPage ] = useState(pathname);
 
     function updateQuery(event) {
         setQuery(event.target.value);
@@ -33,6 +33,7 @@ export default function Navbar(props) {
                 navigate('/');
             })
             .catch(err => {
+                setError(formatErrorMessage(err.response?.data || ""));
                 console.error(err);
             });
     }
@@ -46,6 +47,13 @@ export default function Navbar(props) {
         return `${path}#create-status-update-memo`;
     }
 
+    // scrollWithOffset() from https://github.com/rafgraph/react-router-hash-link/issues/25#issuecomment-536688104
+    function scrollWithOffset (el) {
+        const yCoordinate = el.getBoundingClientRect().top + window.pageYOffset;
+        const yOffset = -110; 
+        window.scrollTo({ top: yCoordinate + yOffset, behavior: 'smooth' }); 
+    }
+
     useEffect(() => {
         axios.get("/api/users/isLoggedIn")
             .then(data => {
@@ -57,11 +65,13 @@ export default function Navbar(props) {
                         console.log("Curr User", userData);
                     })
                     .catch(err => {
+                        setError(formatErrorMessage(err.response?.data || ""));
                         console.error(err);
                     });
                 }
             })
             .catch(err => {
+                setError(formatErrorMessage(err.response?.data || ""));
                 console.error(err);
             });
     }, []);
@@ -97,7 +107,12 @@ export default function Navbar(props) {
                 <div className="drop-down-menu-button">
                     {currUser.username}
                     <div className="drop-down-menu">
-                        <HashLink to={createEntry()}>Create Entry</HashLink>
+                        <HashLink
+                            to={createEntry()}
+                            scroll={el => scrollWithOffset(el)}
+                        >
+                            Create Entry
+                        </HashLink>
                         <button onClick={logOut}>Log Out</button>
                     </div>
                 </div>

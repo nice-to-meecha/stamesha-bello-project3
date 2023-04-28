@@ -2,10 +2,11 @@ import React, { useContext } from "react";
 import axios from "axios";
 import ModifyStatusUpdate from "./ModifyStatusUpdate";
 import { globalContext } from "./GlobalContext";
+import { formatErrorMessage } from "../commonUtilities";
 
 export default function CreateStatusUpdate(props) {
     const { refresh } = props;
-    const { currUser } = useContext(globalContext);
+    const { currUser, setError } = useContext(globalContext);
     const memoId = "create-status-update-memo";
 
     function postStatusUpdate(text, imageUrl) {
@@ -21,6 +22,7 @@ export default function CreateStatusUpdate(props) {
                     refresh();
                 })
                 .catch(err => {
+                    setError(formatErrorMessage(err.response?.data || ""));
                     console.error(err);
                 })
     }

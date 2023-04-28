@@ -3,11 +3,12 @@ import { useNavigate } from "react-router";
 import axios from "axios";
 import AccountInput, { AccountAction } from "./AccountInput";
 import { globalContext } from "./GlobalContext";
+import { formatErrorMessage } from "../commonUtilities";
 
 export default function LoginAccount(props) {
 
     const globalValues = useContext(globalContext);
-    const { setCurrUser } = globalValues;
+    const { setCurrUser, setError } = globalValues;
     const navigate = useNavigate();
 
     function login(username, password) {
@@ -20,6 +21,7 @@ export default function LoginAccount(props) {
                 navigate('/');
             })
             .catch(err => {
+                setError(formatErrorMessage(err.response?.data || ""));
                 console.error(err);
             })
     }

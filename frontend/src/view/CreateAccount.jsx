@@ -24,7 +24,6 @@ export default function CreateAccount(props) {
             .catch(err => {
                 console.log(err.response?.data?.message);
                 setError(formatErrorMessage(err.response?.data || ""));
-                console.error(err);
             })
     }
 

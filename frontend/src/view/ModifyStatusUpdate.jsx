@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import axios from "axios";
 import Image from "./Image";
+import { globalContext } from "./GlobalContext";
+import { formatErrorMessage } from "../commonUtilities";
 import ModifyStatusUpdateImage from "./ModifyStatusUpdateImage";
 import "../css/ModifyStatusUpdate.css";
 
@@ -9,6 +11,7 @@ export default function ModifyStatusUpdate(props) {
     const [url, setUrl] = useState(imageUrl);
     const [file, setFile] = useState("");
     const [memo, setMemo] = useState(text);
+    const { setError } = useContext(globalContext);
 
     function updateMemo(event) {
         setMemo(event.target.value);
@@ -39,6 +42,7 @@ export default function ModifyStatusUpdate(props) {
                 console.log(data);
             })
             .catch(err => {
+                setError(formatErrorMessage(err.response?.data || ""));
                 console.error(err);
             })
     }
@@ -51,23 +55,24 @@ export default function ModifyStatusUpdate(props) {
     }
 
     return (<div className="modify-status-update">
-        <Image
-            src={url}
-            updateFile={updateFile}
-            editing={true}
-        />
-        {/* <ModifyStatusUpdateImage
-            imageUrl={url}
-            updateImageUrl={updateImageUrl}
-        /> */}
+        <div className="modify-status-update-image">
+            <Image
+                src={url}
+                updateFile={updateFile}
+                editing={true}
+            />
+        </div>
         <textarea
             value={memo}
-            // rows={5}
-            // cols={50}
             name="modifyStatusUpdateText"
             onInput={updateMemo}
             id={memoId ? memoId : "modify-status-update-memo"}
         />
-        <button onClick={submitInfo}>Submit</button>
+        <button
+            className="modify-status-update-submit-button"
+            onClick={submitInfo}
+        >
+            Submit
+        </button>
     </div>);
 }

@@ -6,9 +6,8 @@ import Image from "./Image";
 import ModifyStatusUpdate from "./ModifyStatusUpdate";
 import UserLink from "./UserLink";
 import { HiOutlineDotsVertical } from "react-icons/hi";
+import { formatDate, formatErrorMessage } from "../commonUtilities";
 import "../css/StatusUpdate.css";
-
-const MILLISECONDS_PER_DAY = 86400000
 
 export default function StatusUpdate(props) {
     const { 
@@ -21,7 +20,7 @@ export default function StatusUpdate(props) {
             lastEdited,
             refresh,
         } = props;
-    const { currUser } = useContext(globalContext);
+    const { currUser, setError } = useContext(globalContext);
     const [ editing, setEditing ] = useState(false);
     const staticUserContent = (<div className="static-user-content">
         {
@@ -55,6 +54,7 @@ export default function StatusUpdate(props) {
                 refresh();
             })
             .catch(err => {
+                setError(formatErrorMessage(err.response?.data || ""));
                 console.error(err);
             })
     }
@@ -69,30 +69,16 @@ export default function StatusUpdate(props) {
                 lastEdited: Date.now(),
             }
         )
-                .then(data => {
-                    console.log(data);
-                })
-                .then(() => {
-                    refresh();
-                })
-                .catch(err => {
-                    console.error(err);
-                })
-    }
-
-    function formatDate(timestamp) {
-        let options = {}
-        if (Date.now() - timestamp < MILLISECONDS_PER_DAY) {
-            options = { timeStyle: "short" }
-        } else {
-            options = {
-                month: "short",
-                day: "2-digit",
-                year: "numeric",
-            }
-        }
-
-        return (new Date(timestamp)).toLocaleString("en-US", options);
+            .then(data => {
+                console.log(data);
+            })
+            .then(() => {
+                refresh();
+            })
+            .catch(err => {
+                setError(formatErrorMessage(err.response?.data || ""));
+                console.error("modifyStatusUpdate", err);
+            })
     }
 
     return (<div className="status-update">

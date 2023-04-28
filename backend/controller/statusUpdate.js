@@ -35,6 +35,10 @@ router.get("/:statusUpdateId", (req, res) => {
 
 router.post('/', (req, res) => {
     const statusUpdate = req.body;
+    if (!statusUpdate.text && !statusUpdate.imageUrl) {
+        return res.status(400).send("Status update must have text or image url");
+    }
+
     StatusUpdateModel.createStatusUpdate(statusUpdate)
         .then(data => {
             res.send(`Status update successfully created.\n${data}`);
@@ -48,7 +52,7 @@ router.put('/:statusUpdateId', (req, res) => {
     const { statusUpdateId } = req.params;
     const modifiedStatusUpdate = req.body;
     if (!modifiedStatusUpdate.text && !modifiedStatusUpdate.imageUrl) {
-        return res.send(400).status("Status update must have text or image url");
+        return res.status(400).send("Status update must have text or image url");
     }
 
     StatusUpdateModel.modifyStatusUpdate(statusUpdateId, modifiedStatusUpdate)

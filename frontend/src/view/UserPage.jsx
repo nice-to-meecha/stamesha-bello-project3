@@ -5,13 +5,14 @@ import CreateStatusUpdate from "./CreateStatusUpdate";
 import Description from "./Description";
 import StatusUpdateList from "./StatusUpdateList";
 import { globalContext } from "./GlobalContext";
+import { formatDate, formatErrorMessage } from "../commonUtilities";
 import "../css/UserPage.css";
 
 export default function UserPage(props) {
     const { username } = useParams();
     const [user, setUser] = useState(undefined);
     const [statusUpdateListKey, setStatusUpdateListKey] = useState(true);
-    const { currUser } = useContext(globalContext);
+    const { currUser, setError } = useContext(globalContext);
 
     useEffect(() => {
         getUser();
@@ -24,6 +25,7 @@ export default function UserPage(props) {
                 setUser(data.data);
             })
             .catch(err => {
+                setError(formatErrorMessage(err.response?.data || ""));
                 console.error(err)
             })
     }
@@ -41,6 +43,7 @@ export default function UserPage(props) {
                 getUser();
             })
             .catch(err => {
+                setError(formatErrorMessage(err.response?.data || ""));
                 console.error(err);
             })
     }
@@ -62,7 +65,7 @@ export default function UserPage(props) {
                 />
             </div>
         {/* </div> */}
-        <div>Time Joined {user.timeJoined}</div>
+        <div>Time Joined {formatDate(user.timeJoined)}</div>
         <Description
             description={user.description}
             submit={modifyDescription}

@@ -6,11 +6,16 @@ export default function UserLink(props) {
     const { username, userImage } = props;
 
     return (<div>
-        <Link to={`/users/${username}`}>
-            <img
-                className="user-link-image"
-                src="/default_user_image.png"
-            />
+        <Link
+            className="user-link"
+            to={`/users/${username}`}
+        >
+            <div className="user-link-image-container">
+                <img
+                    className="user-link-image"
+                    src="/default_user_image.png"
+                />
+            </div>
             <div>{username}</div>
         </Link>
     </div>);

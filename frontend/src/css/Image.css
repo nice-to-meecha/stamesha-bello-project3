@@ -2,3 +2,29 @@
     max-width: 400px;
     max-height: 325px;
 }
+
+.image-file-label {
+    cursor: pointer;
+    border: 3px solid white;
+    border-radius: 5px;
+    padding: 1% 1.5%;
+    transition: all 0.5s;
+    display: flex;
+    width: fit-content;
+    align-items: center;
+}
+
+.image-file-input {
+    display: none;
+}
+
+.photo-icon {
+    font-size: 20px;
+}
+
+.image-file-label-and-file-name {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+}

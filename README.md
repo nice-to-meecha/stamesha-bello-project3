@@ -85,3 +85,24 @@ Write-up
     - https://dev.to/dillionmegida/how-to-cancel-a-settimeout-in-javascript-l2p#:~:text=Cancelling%20a%20setTimeout&text=Here's%20how...&text=With%20this%20id%20and%20the,you%20can%20cancel%20a%20setTimeout%20.&text=If%20the%20setTimeout%20declaration%20has,will%20not%20be%20executed%20anymore.
 - HTML line break with '\n'
     - https://stackoverflow.com/questions/39325414/line-break-in-html-with-n
+- HTML non-breaking space (&nbsp;)
+    - https://www.w3schools.com/html/html_entities.asp
+- Offsetting HashLink scroll functionality
+    - HashLink documentation with link to offset example - https://www.npmjs.com/package/react-router-hash-link
+    - Code example - https://github.com/rafgraph/react-router-hash-link/issues/25#issuecomment-536688104
+- CSS background
+    - Gradient documentation - https://developer.mozilla.org/en-US/docs/Web/CSS/gradient
+    - How to use gradients - https://www.thisdot.co/blog/understanding-css-gradients
+    - General background information - https://developer.mozilla.org/en-US/docs/Web/CSS/background
+- Dark website theme inspiration
+    - https://www.google.com/search?rlz=1C1VDKB_enUS933US933&sxsrf=APwXEdfD6ov3QgBkKQ7qtUt9w0Th_lQSBw:1682567496754&q=dark+website+theme&tbm=isch&sa=X&ved=2ahUKEwjymdGvlMn-AhUcPUQIHT-uDrMQ0pQJegQICxAB&biw=1536&bih=746&dpr=1.25#imgrc=ToOrhhOnEfbmVM
+- React-icons
+    - https://react-icons.github.io/react-icons/
+- Date formatting
+    - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#options
+- <textarea> resize option
+    - https://stackoverflow.com/questions/25567707/textarea-disable-resize-on-x-or-y
+- How to style an input field with type "file"
+    - https://stackoverflow.com/questions/572768/styling-an-input-type-file-button
+- Flexbox align-items values
+    - https://css-tricks.com/almanac/properties/a/align-items/

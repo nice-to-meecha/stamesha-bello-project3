@@ -1,4 +1,38 @@
+.user-link {
+    display: flex;
+    align-items: center;
+    min-width: fit-content;
+}
+
+.user-link-image-container {
+    background-image:
+        radial-gradient(circle at center, #121314, #121314 65%, rgba(0, 0, 0, 0) 65%),
+        linear-gradient(rgb(252, 3, 78), #F0803C);
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    margin: 0 10px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .user-link-image {
     width: 50px;
-    height: 50px;
+    height: 51px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.user-link {
+    text-decoration: none;
+}
+
+.user-link:hover {
+    font-weight: bold;
+}
+
+.user-link:visited {
+    color: inherit;
 }

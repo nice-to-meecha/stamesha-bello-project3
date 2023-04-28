@@ -1,13 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import axios from "axios";
 import UserLink from "./UserLink";
+import { globalContext } from "./GlobalContext";
+import { formatErrorMessage } from "../commonUtilities";
+import "../css/SearchResult.css";
 
 export default function SearchResult(props) {
     const [ matchingUsers, setMatchingUsers ] = useState([]);
 
     const [urlSearchParams, setUrlSearchParams] = useSearchParams();
     const query = urlSearchParams.get("query");
+
+    const { setError } = useContext(globalContext);
 
     function createUserList(users) {
         return users.map(({ username, userImage }, i) => (
@@ -31,11 +36,14 @@ export default function SearchResult(props) {
             }
         })
         .catch(err => {
+            setError(formatErrorMessage(err.response?.data || ""));
             console.error(err);
         })
-    }, []);
+    }, [urlSearchParams]);
 
-    return (<div>
-        { matchingUsers?.length ? matchingUsers : "No existing users match the search..."}
+    return (<div className="search-result-container">
+        <div className="search-result">
+            { matchingUsers?.length ? matchingUsers : "No existing users match the search..."}
+        </div>
     </div>);
 }

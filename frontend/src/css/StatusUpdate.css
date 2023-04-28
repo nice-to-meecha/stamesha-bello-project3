@@ -14,7 +14,7 @@
     position: absolute;
     left: 0;
     top: 0;
-    z-index: -3;
+    z-index: 0;
 }
 
 .status-update:hover {
@@ -35,6 +35,7 @@
     display: flex;
     width: 90%;
     column-gap: 5%;
+    align-items: center;
 }
 
 .status-update-options {
@@ -60,6 +61,10 @@
     flex-direction: column;
     align-items: center;
     row-gap: 10px;
+    position: relative;
+    width: fit-content;
+    left: 50%;
+    translate: -50%;
 }
 
 /* .status-update-timestamp::before {

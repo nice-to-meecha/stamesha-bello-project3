@@ -3,11 +3,12 @@ import axios from "axios";
 import { globalContext } from "./GlobalContext";
 import CreateStatusUpdate from "./CreateStatusUpdate";
 import StatusUpdateList from "./StatusUpdateList";
+import { formatErrorMessage } from "../commonUtilities";
 
 export default function Feed(props) {
     const [users, setUsers] = useState([]);
     const [statusUpdateListKey, setStatusUpdateListKey] = useState(true)
-    const { currUser } = useContext(globalContext);
+    const { currUser, setError } = useContext(globalContext);
 
     useEffect(() => {
         axios.get("/api/users")
@@ -15,6 +16,7 @@ export default function Feed(props) {
                 setUsers([...data.data]);
             })
             .catch(err => {
+                setError(formatErrorMessage(err.response?.data || ""));
                 console.error(err);
             })
     }, [])
