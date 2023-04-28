@@ -77,3 +77,11 @@ Write-up
     - https://stackoverflow.com/questions/54033765/how-to-give-image-src-dynamically-in-react-js
 - Remove all styling from links
     - https://stackoverflow.com/questions/8919682/remove-all-styling-formatting-from-hyperlinks
+- Grouping children of parent element in CSS selector
+    - https://stackoverflow.com/a/67833613
+- Using htmlFor for <label>s
+    - https://www.codeproject.com/Tips/1248317/Creating-Labels-for-Input-Elements-in-React
+- How to clear timeouts
+    - https://dev.to/dillionmegida/how-to-cancel-a-settimeout-in-javascript-l2p#:~:text=Cancelling%20a%20setTimeout&text=Here's%20how...&text=With%20this%20id%20and%20the,you%20can%20cancel%20a%20setTimeout%20.&text=If%20the%20setTimeout%20declaration%20has,will%20not%20be%20executed%20anymore.
+- HTML line break with '\n'
+    - https://stackoverflow.com/questions/39325414/line-break-in-html-with-n

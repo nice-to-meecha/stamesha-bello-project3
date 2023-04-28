@@ -87,7 +87,7 @@
     justify-content: end;
 }
 
-.login-buttons > a {
+.login-signup-link {
     all: unset;
     cursor: pointer;
     border: 3px solid white;
@@ -96,7 +96,7 @@
     transition: all 0.5s;
 }
 
-.login-buttons > a:hover {
+.login-buttons > a:hover, .indicate-current-page {
     background-color: #F0803C;
     color: black;
 }

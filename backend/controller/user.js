@@ -41,7 +41,7 @@ router.get("/:userId", (req, res) => {
 
 router.post('/', (req, res) => {
     const user = req.body;
-    if (user.password) {
+    if (user.password?.length >= 8) {
         user.password = jwt.sign(user.password, process.env.SECRET);
     }
 

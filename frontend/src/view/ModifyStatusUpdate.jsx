@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import Image from "./Image";
 import ModifyStatusUpdateImage from "./ModifyStatusUpdateImage";
+import "../css/ModifyStatusUpdate.css";
 
 export default function ModifyStatusUpdate(props) {
     const { imageUrl, text, submit, memoId } = props;
@@ -45,12 +46,11 @@ export default function ModifyStatusUpdate(props) {
     function submitInfo() {
         postFile();
         submit(memo, url);
-        // setMemo("");
-        // setUrl("");
+        setMemo("");
+        setUrl("");
     }
 
-    return (<div>
-        Url: {url}
+    return (<div className="modify-status-update">
         <Image
             src={url}
             updateFile={updateFile}
@@ -62,8 +62,8 @@ export default function ModifyStatusUpdate(props) {
         /> */}
         <textarea
             value={memo}
-            rows={5}
-            cols={100}
+            // rows={5}
+            // cols={50}
             name="modifyStatusUpdateText"
             onInput={updateMemo}
             id={memoId ? memoId : "modify-status-update-memo"}

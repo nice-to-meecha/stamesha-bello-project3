@@ -1,11 +1,14 @@
 .status-update {
     position: relative;
-    margin-top: 1%;
+    background-color: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 5px;
+    transition: border-color 0.5s;
+    width: 57%;
+    padding-bottom: 3%;
 }
 
 .status-update-background {
-    background-color: lightgray;
-    border-radius: 5px;
     width: 100%;
     height: 100%;
     position: absolute;
@@ -13,6 +16,56 @@
     top: 0;
     z-index: -3;
 }
+
+.status-update:hover {
+    border-color: white;
+}
+
+.status-update:hover .status-update-drop-down-menu-button {
+    visibility: visible;
+}
+
+.status-update-header {
+    display: flex;
+    padding-top: 1%;
+    padding-bottom: 3%;
+}
+
+.status-update-meta-data {
+    display: flex;
+    width: 90%;
+    column-gap: 5%;
+}
+
+.status-update-options {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    width: 10%;
+}
+
+.status-update-drop-down-menu-button {
+    color: transparent;
+    background-color: transparent;
+    margin-right: 5%;
+    visibility: hidden;
+}
+
+.settings-icon {
+    font-size: 20px;
+}
+
+.static-user-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 10px;
+}
+
+/* .status-update-timestamp::before {
+    content: '. ';
+    padding-right: 5%;
+} */
 
 /*
     TODO: Make width of other contents of status update < 100%,

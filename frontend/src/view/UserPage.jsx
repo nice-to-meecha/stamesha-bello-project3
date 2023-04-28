@@ -5,6 +5,7 @@ import CreateStatusUpdate from "./CreateStatusUpdate";
 import Description from "./Description";
 import StatusUpdateList from "./StatusUpdateList";
 import { globalContext } from "./GlobalContext";
+import "../css/UserPage.css";
 
 export default function UserPage(props) {
     const { username } = useParams();
@@ -49,8 +50,18 @@ export default function UserPage(props) {
     }
 
     return (<div>
-        <div>{user.userImage}</div>
-        <div>{user.username}</div>
+        {/* <div className="username-image-combo"> */}
+            <div className="user-page-username">
+                <div>{user.username.toUpperCase()}</div>
+                <img
+                    className="user-page-image"
+                    src={user.userImage
+                        ? user.userImage
+                        : "/default_user_image.svg"
+                    }
+                />
+            </div>
+        {/* </div> */}
         <div>Time Joined {user.timeJoined}</div>
         <Description
             description={user.description}

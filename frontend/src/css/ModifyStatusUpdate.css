@@ -1,0 +1,16 @@
+.modify-status-update {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#modify-status-update-memo {
+    width: 75%;
+}
+
+#create-status-update-memo {
+    width: 57%;
+    height: 100px;
+    border-radius: 5px;
+    background-color: rgba(240, 128, 60, 0.15);
+}

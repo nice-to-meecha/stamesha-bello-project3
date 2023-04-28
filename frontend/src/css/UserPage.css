@@ -1,0 +1,14 @@
+/* .username-image-combo {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+} */
+
+.user-page-username {
+    position: fixed;
+    align-self: flex-start;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+}

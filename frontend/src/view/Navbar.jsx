@@ -14,6 +14,8 @@ export default function Navbar(props) {
     const { currUser, setCurrUser } = globalValues;
     const { username: usernameParam } = useParams();
     const navigate = useNavigate();
+    const { pathname } = useLocation();
+    const [ currentAccountPage, setCurrentAccountPage ] = useState(pathname);
 
     function updateQuery(event) {
         setQuery(event.target.value);
@@ -67,21 +69,41 @@ export default function Navbar(props) {
     useEffect(() => {
         if (!currUser) {
             setLoginLogoutButtons((<div className="login-logout-buttons login-buttons">
-                <Link to="/logIn">Log In</Link>
-                <Link to="/signUp">Sign Up</Link>
+                <Link
+                    id="navbar-login-link"
+                    className={
+                        (pathname ?? "").endsWith("logIn")
+                            ? "login-signup-link indicate-current-page"
+                            : "login-signup-link"
+                    }
+                    to="/logIn"
+                >
+                    Log In
+                </Link>
+                <Link
+                    id="navbar-signup-link"
+                    className={
+                        (pathname ?? "").endsWith("signUp")
+                            ? "login-signup-link indicate-current-page"
+                            : "login-signup-link"
+                    }
+                    to="/signUp"
+                >
+                    Sign Up
+                </Link>
             </div>))
         } else {
             setLoginLogoutButtons(<div className="login-logout-buttons">
-                <button className="logged-in-user-menu-button">
+                <div className="drop-down-menu-button">
                     {currUser.username}
-                    <div className="user-menu">
+                    <div className="drop-down-menu">
                         <HashLink to={createEntry()}>Create Entry</HashLink>
                         <button onClick={logOut}>Log Out</button>
                     </div>
-                </button>
+                </div>
             </div>)
         }
-    }, [globalValues.currUser]);
+    }, [globalValues.currUser, pathname]);
 
     return (<div className="navbar">
         <div className="home-button">

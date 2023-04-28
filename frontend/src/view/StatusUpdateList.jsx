@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import StatusUpdate from "./StatusUpdate";
+import "../css/StatusUpdateList.css"
 
 export default function StatusUpdateList(props) {
     const { users, refresh } = props;
@@ -36,5 +37,5 @@ export default function StatusUpdateList(props) {
     }, [users]);
 
 
-    return (<div>{statusUpdateList}</div>);
+    return (<div className="status-update-list">{statusUpdateList}</div>);
 }

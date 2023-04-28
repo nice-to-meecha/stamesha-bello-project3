@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider, BrowserRouter, Outlet } from "reac
 // import App from "./App";
 import Navbar from "./view/Navbar";
 import Feed from "./view/Feed";
+import Error from "./view/Error";
 import LoginAccount from "./view/LoginAccount";
 import CreateAccount from "./view/CreateAccount";
 import GlobalContext from "./view/GlobalContext";
@@ -17,6 +18,7 @@ const router = createBrowserRouter([
       path: '/',
       element: (<div>
         <Navbar />
+        <Error />
         <div className="outlet">
           <Outlet />
         </div>

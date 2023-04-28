@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { globalContext } from "./GlobalContext";
+import "../css/AccountInput.css";
 
 export class AccountAction {
     static SignUp = new AccountAction("Sign Up");
@@ -30,13 +31,36 @@ export default function AccountInput(props) {
         return (<div>You're already {accountAction === "Sign Up" ? "signed up" : "logged in"}</div>);
     }
 
-    return (<div>
-        <div>
-            Username: <input value={username} onInput={updateUsername} type="text" />
+    return (<div className="account-input">
+        <div className="username-password-inputs">
+            <div className="username-input-unit">
+                <label htmlFor="username-input">
+                    Username:&nbsp;
+                </label>
+                <input
+                    id="username-input"
+                    value={username}
+                    onInput={updateUsername}
+                    type="text"
+                />
+            </div>
+            <div className="password-input-unit">
+                <label htmlFor="password-input">
+                    Password:&nbsp;
+                </label>
+                <input
+                    id="password-input"
+                    value={password}
+                    onInput={updatePassword}
+                    type="password"
+                />
+            </div>
         </div>
-        <div>
-            Password: <input value={password} onInput={updatePassword} type="password" />
-        </div>
-        <button onClick={() => submit(username, password)}>{accountAction}</button>
+        <button
+            className="account-input-submit-button tweeter-button"
+            onClick={() => submit(username, password)}
+        >
+            {accountAction}
+        </button>
     </div>);
 }
