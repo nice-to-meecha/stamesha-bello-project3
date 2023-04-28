@@ -2,6 +2,7 @@
     display: flex;
     align-items: center;
     min-width: fit-content;
+    text-decoration: none;
 }
 
 .user-link-image-container {
@@ -25,14 +26,36 @@
     overflow: hidden;
 }
 
-.user-link {
-    text-decoration: none;
-}
-
-.user-link:hover {
-    font-weight: bold;
-}
-
 .user-link:visited {
     color: inherit;
+}
+
+.user-link:link {
+    color: inherit;
+}
+
+.user-link-in-list {
+    border: 3px solid white;
+    border-radius: 50%;
+    width: 25vw;
+    height: 25vw;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.user-link-in-list .user-link-image-container {
+    width: 10vw;
+    height: 10vw;
+    background-image:
+        radial-gradient(circle at center, #121314, #121314 65%, rgba(0, 0, 0, 0) 65%),
+        linear-gradient(rgb(252, 3, 78), #F0803C);
+}
+
+.user-link-in-list .user-link-image {
+    width: 9.5vw;
+    height: 9.5vw;
+}
+
+.user-link-in-list .user-link-username {
+    font-size: xx-large;
 }

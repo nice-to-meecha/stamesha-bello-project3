@@ -5,7 +5,9 @@
 
 .search-result {
     display: flex;
-    width: fit-content;
-    flex-direction: column;
+    width: 60vw;
+    justify-content: center;
+    column-gap: 10px;
+    flex-wrap: wrap;
     row-gap: 15px;
 }

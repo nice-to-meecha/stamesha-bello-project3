@@ -33,13 +33,13 @@ Write-up
           to work on this much longer than I did, but I don't even know how much time
           I did manage to devote to this. Maybe 50-60 hours..?
     - Bonus Points Attempted
-        - **Submit Early (3 pts)** NOT SURE
-            - 
         - Password Encryption (2 pts)
             - The password is encrypted enroute to the database and is decrypted
               after being retrieved, in user.js.
-        - **Image Status Updates** NOT YET
-            - 
+        - Image Status Updates
+            - Images are saved within the /public directory on the server running the
+              backend and are then served, according to the imageUrl saved with
+              relevant StatusUpdates.
         - Search for Users (5 pts)
             - The Navbar retains a searchbar, with which users can be searched,
               based on username. This will produce a list of UserLinks, which will

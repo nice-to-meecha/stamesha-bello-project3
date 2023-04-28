@@ -17,6 +17,7 @@ export default function SearchResult(props) {
     function createUserList(users) {
         return users.map(({ username, userImage }, i) => (
             <UserLink
+                className="user-link-in-list"
                 username={username}
                 userImage={userImage}
                 key={i}
