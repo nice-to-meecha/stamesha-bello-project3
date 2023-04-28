@@ -1,6 +1,8 @@
 import React, { useContext, useState } from "react";
 import { useParams } from "react-router";
 import { globalContext } from "./GlobalContext";
+import { BsPencilSquare } from "react-icons/bs";
+import "../css/Description.css";
 
 export default function Description(props) {
     const { description, submit } = props;
@@ -20,24 +22,31 @@ export default function Description(props) {
     }
 
     if (username !== currUser?.username) {
-        display = (<div>Description: {description}</div>);
+        display = (<div>{description}</div>);
 
     } else if (editing) {
-        display = (<div>
+        display = (<div className="edit-description">
             <textarea
+                className="edit-description-memo"
                 value={memo}
-                rows={3}
-                cols={100}
                 name="modifyStatusUpdateText"
                 onInput={updateMemo}
             />
-            <button onClick={updateDescription}>Update</button>
+            <button
+                className="edit-description-submit-button"
+                onClick={updateDescription}
+            >
+                Update
+            </button>
         </div>);
 
     } else {
-        display = (<div>
-            Description: {description}
-            <button onClick={() => setEditing(true)}>Update Description</button>
+        display = (<div className="static-description">
+            <BsPencilSquare
+                className="edit-description-icon"
+                onClick={() => setEditing(true)}
+            />
+            &nbsp; {description}
         </div>
         );
     }

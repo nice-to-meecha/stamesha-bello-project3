@@ -52,10 +52,9 @@ export default function UserPage(props) {
         return (<div>{username} isn't an existing account</div>)
     }
 
-    return (<div>
+    return (<div className="user-page">
         {/* <div className="username-image-combo"> */}
-            <div className="user-page-username">
-                <div>{user.username.toUpperCase()}</div>
+            <div>
                 <img
                     className="user-page-image"
                     src={user.userImage
@@ -65,11 +64,18 @@ export default function UserPage(props) {
                 />
             </div>
         {/* </div> */}
-        <div>Time Joined {formatDate(user.timeJoined)}</div>
-        <Description
-            description={user.description}
-            submit={modifyDescription}
-        />
+        <div className="user-page-info">
+            <div className="user-page-username">
+                {user.username.toUpperCase()}
+            </div>
+            <div className="time-joined">
+                Joined {formatDate(user.timeJoined)}
+            </div>
+            <Description
+                description={user.description}
+                submit={modifyDescription}
+            />
+        </div>
         {currUser?.username === username && <CreateStatusUpdate refresh={refreshStatusUpdates} />}
         <StatusUpdateList
             users={[user]}

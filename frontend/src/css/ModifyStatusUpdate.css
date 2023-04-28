@@ -27,6 +27,7 @@
     border-radius: 5px;
     background-color: #F0803C;
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) 100%);
+    color: rgba(255, 255, 255, 0.75);
     resize: vertical;
     transition: all 1s;
 }
@@ -37,6 +38,7 @@
 
 #create-status-update-memo:focus, #modify-status-update-memo:focus {
     background-image: none;
+    color: black;
 }
 
 .modify-status-update-submit-button {

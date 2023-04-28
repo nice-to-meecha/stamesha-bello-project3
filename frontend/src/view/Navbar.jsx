@@ -50,7 +50,7 @@ export default function Navbar(props) {
     // scrollWithOffset() from https://github.com/rafgraph/react-router-hash-link/issues/25#issuecomment-536688104
     function scrollWithOffset (el) {
         const yCoordinate = el.getBoundingClientRect().top + window.pageYOffset;
-        const yOffset = -110; 
+        const yOffset = -130; 
         window.scrollTo({ top: yCoordinate + yOffset, behavior: 'smooth' }); 
     }
 
