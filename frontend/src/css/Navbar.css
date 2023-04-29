@@ -27,7 +27,7 @@
 
 .home-link {
     all: unset;
-    font-size: 5vw;
+    font-size: 4vw;
     text-decoration: none;
 }
 
@@ -138,4 +138,81 @@
 .user-menu > :is(button:hover, a:hover) {
     background-color: lightslategray;
     color: white;
+}
+
+.drop-down-username {
+    font-size: 1.75vw;
+}
+
+@media (max-width: 992px) {
+    .drop-down-username {
+        font-size: 2.25vw;
+    }
+}
+
+@media (max-width: 875px) {
+    .drop-down-username {
+        font-size: 2.5vw;
+    }
+
+    .home-link {
+        font-size: 6.25vw;
+    }
+}
+
+@media (max-width: 700px) {
+    .drop-down-username {
+        font-size: 3vw;
+    }
+
+    .home-link {
+        font-size: 6.75vw;
+    }
+}
+
+@media (max-width: 576px) {
+    .drop-down-username {
+        font-size: 3.5vw;
+    }
+
+    .home-link {
+        font-size: 7vw;
+    }
+}
+
+@media (max-width: 450px) {
+    .drop-down-username {
+        font-size: 4vw;
+    }
+
+    .home-link {
+        font-size: 7.75vw;
+    }
+
+    .navbar-options {
+        justify-content: space-between;
+    }
+
+    .navbar {
+        flex-direction: column;
+    }
+
+    .home-button {
+        align-self: center;
+        margin-bottom: 3px;
+    }
+}
+
+@media (max-width: 400px) {
+    .home-link {
+        font-size: 8vw;
+    }
+
+    .drop-down-username {
+        font-size: 4.75vw;
+    }
+
+    .search-bar {
+        width: 75%;
+    }
 }

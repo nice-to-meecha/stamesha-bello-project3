@@ -105,7 +105,7 @@ export default function Navbar(props) {
         } else {
             setLoginLogoutButtons(<div className="login-logout-buttons">
                 <div className="drop-down-menu-button">
-                    {currUser.username}
+                    <span className="drop-down-username">{currUser.username}</span>
                     <div className="drop-down-menu">
                         <HashLink
                             to={createEntry()}
@@ -127,7 +127,6 @@ export default function Navbar(props) {
         <div className="navbar-options">
             <div className="search-unit">
                 <input className="search-bar" value={query} onInput={updateQuery} type="search" />
-                {/* TODO - Replace with magnifying glass or other search icon */}
                 <HiOutlineMagnifyingGlassCircle
                     className="search-submit-icon"
                     onClick={search}

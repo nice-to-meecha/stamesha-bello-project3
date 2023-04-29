@@ -15,9 +15,10 @@ Write-up
           either, for some reason! I eventually found out that that there's a separate package
           for links with hashes, "react-router-hash-link", which performs all of this
           activity automatically, so I switched to using that.
+        - File uploading
 
     - Given more time, what additional features, functional or design changes would you make?
-        - I would sdd a splash page and more animations
+        - I would add a splash page and animations
         - Add the ability to follow people
         - I would add the functionality to retrieve StatusUpdates based on specific
           users, so that you would only see posts from who you follow.
@@ -26,12 +27,13 @@ Write-up
           be available and attributed to them
 
     - What assumptions did you make while working on this assignment?
-        - That usernames would not contain characters that could create problems for the url
+        - That usernames would not contain characters that could create problems for the url...
+        - That users wouldn't upload an image or text that's too large
 
     - How long did this assignment take to complete?
         - I should've timed myself, but I did not. It's honestly hard to say; I wanted
           to work on this much longer than I did, but I don't even know how much time
-          I did manage to devote to this. Maybe 50-60 hours..?
+          I did manage to devote to this. Maybe 50-70 hours..?
     - Bonus Points Attempted
         - Password Encryption (2 pts)
             - The password is encrypted enroute to the database and is decrypted
@@ -106,3 +108,8 @@ Write-up
     - https://stackoverflow.com/questions/572768/styling-an-input-type-file-button
 - Flexbox align-items values
     - https://css-tricks.com/almanac/properties/a/align-items/
+- multer
+    - How to use multer - https://www.npmjs.com/package/multer
+    - How to rename files with multer - https://www.itsolutionstuff.com/post/node-js-multer-rename-uploaded-file-exampleexample.html
+- How to limit accepted file types
+    - https://stackoverflow.com/questions/5796537/input-type-file-limit-selectable-files-by-extensions

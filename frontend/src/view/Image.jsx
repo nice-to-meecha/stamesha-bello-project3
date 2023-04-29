@@ -11,6 +11,7 @@ export default function Image(props) {
                 <input
                     className="image-file-input"
                     type="file"
+                    accept=".gif, .jpg, .jpeg, .png"
                     onChange={updateFile}
                 />
                 <HiOutlinePhotograph className="photo-icon"/> Add a photo

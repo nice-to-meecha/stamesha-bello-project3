@@ -1,10 +1,3 @@
-/* .username-image-combo {
-    position: relative;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-} */
-
 .user-page-image {
     position: fixed;
     align-self: flex-start;
@@ -38,4 +31,15 @@
 
 .time-joined {
     margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+    .user-page-info {
+        margin-top: calc(300px + 10%);
+        text-align: center;
+        align-self: center;
+        min-height: fit-content;
+        height: 25vh;
+        width: 95%;
+    }
 }

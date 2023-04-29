@@ -41,6 +41,7 @@
     height: 25vw;
     flex-direction: column;
     justify-content: center;
+    overflow: hidden;
 }
 
 .user-link-in-list .user-link-image-container {
@@ -58,4 +59,30 @@
 
 .user-link-in-list .user-link-username {
     font-size: xx-large;
+}
+
+.user-link-in-list:is(.user-link) {
+    min-width: 0px;
+}
+
+@media (max-width: 576px) {
+    .user-link-image-container {
+        width: 40px;
+        height: 40px;   
+    }
+
+    .user-link-image {
+        width: 35px;
+        height: 35px;
+    }
+
+    .user-link-in-list .user-link-username {
+        font-size: x-large;
+    }
+}
+
+@media (max-width: 400px) {
+    .user-link-in-list .user-link-username {
+        font-size: large;
+    }
 }

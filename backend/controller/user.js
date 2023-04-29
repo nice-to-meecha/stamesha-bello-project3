@@ -71,11 +71,12 @@ router.post('/logIn', (req, res) => {
     const { username, password } = req.body;
     UserModel.getUserByUsername(username)
         .then(data => {
-            const decryptedPassword = jwt.verify(data.password, process.env.SECRET);
             if (!data) {
-                res.status(404).send(`Username ${username} not found`);
+                return res.status(404).send(`Username ${username} not found`);
+            }
 
-            } else if (decryptedPassword !== password) {
+            const decryptedPassword = jwt.verify(data.password, process.env.SECRET);
+            if (decryptedPassword !== password) {
                 res.status(401).send(`Password is incorrect`);
 
             } else {

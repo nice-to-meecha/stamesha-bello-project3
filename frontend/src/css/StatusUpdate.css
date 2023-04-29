@@ -43,6 +43,7 @@
     justify-content: end;
     align-items: center;
     width: 10%;
+    padding-right: 2%;
 }
 
 .status-update-drop-down-menu-button {
@@ -72,7 +73,14 @@
     padding-right: 5%;
 } */
 
-/*
-    TODO: Make width of other contents of status update < 100%,
-          so can click background that's behind them
-*/
+@media (max-width: 992px) {
+    .status-update {
+        width: 75%;
+    }
+}
+
+@media (max-width: 768px) {
+    .status-update {
+        width: 95%;
+    }
+}
