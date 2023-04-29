@@ -1,5 +1,16 @@
 {
+  "workspaces": [
+    "backend/controller",
+    "frontend"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "concurrently \"npm run dev -w backend/controller\" \"npm run dev -w frontend\"",
+    "build": "npm run build -ws --if-present",
+    "prod": "npm run start -w backend/controller"
+  },
   "dependencies": {
+    "concurrently": "^8.0.1",
     "cookie-parser": "^1.4.6",
     "mongoose": "^7.0.3"
   },
