@@ -31,11 +31,11 @@ export default function ModifyStatusUpdate(props) {
     function postFile() {
         const formData = new FormData();
         formData.append("file", file);
-        formData.append("filename", file.name);
         const config = {
             headers: {
                 "content-type": "multipart/form-data",
             },
+            responseEncoding: "base64",
         }
         axios.post("/api/images", formData, config)
             .then(data => {

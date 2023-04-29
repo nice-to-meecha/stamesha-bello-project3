@@ -19,7 +19,7 @@ export default function Image(props) {
         </div>);
     }
 
-    return (<div>
+    return (<div className="uploaded-image-container">
         <img
             className={className ? className : "uploaded-image"}
             src={src}

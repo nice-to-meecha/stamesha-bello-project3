@@ -1,6 +1,18 @@
 const router = require("express").Router();
-const fs = require("fs");
 const ImageModel = require("./image.model");
+const multer  = require('multer');
+
+const storage = multer.diskStorage({
+    destination: function(req, file, cb) {
+        cb(null, "../../frontend/public/");
+    },
+  
+    filename: function(req, file, cb) {
+        cb(null, file.originalname);
+    }
+});
+
+const upload = multer({ storage })
 
 router.get("/:imageId", (req, res) => {
     const { imageId } = req.params;
@@ -13,25 +25,13 @@ router.get("/:imageId", (req, res) => {
         });
 });
 
-router.post('/', (req, res) => {
-    const image = req.body;
+router.post('/', upload.single("file"), (req, res) => {
     try {
-        req.busboy.on("file", (fieldName, fileStream, fileInfo) => {
-            console.log(fieldName, fileStream, fileInfo);
-            const fsStream = fs.createWriteStream(`../../frontend/public/${fileInfo.filename}`);
-            fileStream.pipe(fsStream);
-            fsStream.on("close", () => {
-                console.log("File successfully uploaded!");
-            });
-        });
-        req.pipe(req.busboy);
-        return res.send("File uploaded")
-
+        res.send(`${req.file} uploaded successfully`);
     } catch (err) {
-        console.error(err);
-        return res.status(400).send(err);
+        res.status(400).send(err);
     }
-    
+
     // ImageModel.createImage({ username, image })
     //     .then(data => {
     //         res.send(`Image successfully created.\n${data}`);

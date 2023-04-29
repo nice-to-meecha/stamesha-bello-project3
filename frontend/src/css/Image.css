@@ -1,6 +1,10 @@
+.uploaded-image-container {
+    width: 60%;
+    text-align: center;
+}
+
 .uploaded-image {
-    max-width: 400px;
-    max-height: 325px;
+    width: 100%;
 }
 
 .image-file-label {
