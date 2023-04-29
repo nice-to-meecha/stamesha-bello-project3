@@ -27,10 +27,12 @@
 
 .user-page-username {
     font-size: 5vw;
+    font-family: 'Gloock', serif;
 }
 
 .time-joined {
     margin-bottom: 20px;
+    font-weight: 100;
 }
 
 @media (max-width: 768px) {

@@ -1,51 +1,68 @@
 # stamesha-bello-project3
 Fake Twitter... or is it?
 
-Write-up
-    - What were some challenges you faced while making this app?
-        - I thought that, with the "Create Entry" button in the Navbar, simply linking to
-          an existing CreateStatusUpdate component (on the home or user page) would make for
-          the best user experience. However, I found that more difficult than expected.
-          I found that my implementation of using the navigator (produced by useNavigate)
-          would only scroll and focus on the text box -- at most -- twice. If on a different
-          page, it would navigate to the appropriate page and focus on the text area.
-          From there, if selected again, it would do the same once more but no more after
-          that. I tried updating a global variable in the Navbar, which was being "watched"
-          in the ModifyStatusUpdate component (via useEffect()), but that wasn't working
-          either, for some reason! I eventually found out that that there's a separate package
-          for links with hashes, "react-router-hash-link", which performs all of this
-          activity automatically, so I switched to using that.
-        - File uploading
+### Write-up
+- What were some challenges you faced while making this app?
+    - Uploading images presented a decent challenge. I first found a tutorial
+      to process files with busboy-connect, but the image quality was not consistent,
+      with a number of pictures being blurry or only fractionally visible. With
+      that middleware, there were maybe two or three times when images seemed to be
+      uploaded properly. I tried looking into it but was not able to identify the
+      problem in a reasonable amount of time. (Due to the inconsistencies, I now
+      wonder if it was an asynchronous issue...) For the sake of time, I decided
+      to try another package -- multer -- which works quite nicely.
 
-    - Given more time, what additional features, functional or design changes would you make?
-        - I would add a splash page and animations
-        - Add the ability to follow people
-        - I would add the functionality to retrieve StatusUpdates based on specific
-          users, so that you would only see posts from who you follow.
-        - I would store and retrieve StatusUpdates with userId -- rather than username --
-          so that even if someone's username changes, their status updates will still
-          be available and attributed to them
+    - I thought that, with the "Create Entry" button in the Navbar, simply linking to
+      an existing CreateStatusUpdate component (on the home or user page) would make for
+      the best user experience. However, I found that more difficult than expected.
+      My original implementation, using the navigator (produced by useNavigate()),
+      would only scroll and focus on the text box -- at most -- twice. If on a different
+      page, it would navigate to the appropriate page and focus on the text area.
+      From there, if selected again, it would do the same once more but no more after
+      that. I tried updating a global variable in the Navbar, which was being "watched"
+      in the ModifyStatusUpdate component (via useEffect()), but that wasn't working
+      either, for some reason! I eventually found out that that there's a separate package
+      for links with hashes, "react-router-hash-link", which performs all of this
+      activity automatically, so I switched to using that.
+        - It seems that the "Create Entry" button was removed from the project description
+          rather recently, so my troubles seem to have been in vain. I will leave the
+          button as is, as a memento of my struggles.
 
-    - What assumptions did you make while working on this assignment?
-        - That usernames would not contain characters that could create problems for the url...
-        - That users wouldn't upload an image or text that's too large
+- Given more time, what additional features, functional or design changes would you make?
+    - I would most certainly add more visual appeal to the site; it's rather bland and
+      unexciting, at the moment. Ideally, I would add a splash page and an assortment of
+      animations.
+    - Additionally, for a more user-specific experience, I would add the ability to
+      follow other users, as well as related functionality to retrieve StatusUpdates
+      based on those followed.
+    - I would store and retrieve StatusUpdates with userId -- rather than username --
+      so that even if someone's username changes, their status updates will still
+      be available and attributed to them
 
-    - How long did this assignment take to complete?
-        - I should've timed myself, but I did not. It's honestly hard to say; I wanted
-          to work on this much longer than I did, but I don't even know how much time
-          I did manage to devote to this. Maybe 50-70 hours..?
-    - Bonus Points Attempted
-        - Password Encryption (2 pts)
-            - The password is encrypted enroute to the database and is decrypted
-              after being retrieved, in user.js.
-        - Image Status Updates
-            - Images are saved within the /public directory on the server running the
-              backend and are then served, according to the imageUrl saved with
-              relevant StatusUpdates.
-        - Search for Users (5 pts)
-            - The Navbar retains a searchbar, with which users can be searched,
-              based on username. This will produce a list of UserLinks, which will
-              link to the UserPage of the selected user.
+- What assumptions did you make while working on this assignment?
+    - I assumed usernames would not contain characters that could make navigation
+      difficult, when viewing UserPages.
+    - I assumed users wouldn't upload an image that's too large for my current
+      implementation to handle.
+    - I also assumed that TA's would dig too deeply into error handling. 😅
+
+- How long did this assignment take to complete?
+    - I should've timed myself, but I did not. It's honestly hard to say; I wanted
+      to work on this much longer than I did, but I don't even know how much time
+      I managed to devote to this. Maybe 50-70 hours..?
+
+- Bonus Points Attempted
+    - Password Encryption (2 pts)
+        - The password is encrypted enroute to the database and is decrypted
+          after being retrieved, in user.js.
+    - Image Status Updates
+        - Images are saved within the /public directory on the server running the
+          backend and are then served, according to the imageUrl saved with
+          relevant StatusUpdates.
+    - Search for Users (5 pts)
+        - The Navbar retains a searchbar, with which users can be searched,
+          based on username. This will produce a list of UserLinks, which will
+          link to the UserPage of the selected user.
 
 
 ### Resources
@@ -81,13 +98,13 @@ Write-up
     - https://stackoverflow.com/questions/8919682/remove-all-styling-formatting-from-hyperlinks
 - Grouping children of parent element in CSS selector
     - https://stackoverflow.com/a/67833613
-- Using htmlFor for <label>s
+- Using htmlFor for labels
     - https://www.codeproject.com/Tips/1248317/Creating-Labels-for-Input-Elements-in-React
 - How to clear timeouts
     - https://dev.to/dillionmegida/how-to-cancel-a-settimeout-in-javascript-l2p#:~:text=Cancelling%20a%20setTimeout&text=Here's%20how...&text=With%20this%20id%20and%20the,you%20can%20cancel%20a%20setTimeout%20.&text=If%20the%20setTimeout%20declaration%20has,will%20not%20be%20executed%20anymore.
 - HTML line break with '\n'
     - https://stackoverflow.com/questions/39325414/line-break-in-html-with-n
-- HTML non-breaking space (&nbsp;)
+- HTML non-breaking space &nbsp ;
     - https://www.w3schools.com/html/html_entities.asp
 - Offsetting HashLink scroll functionality
     - HashLink documentation with link to offset example - https://www.npmjs.com/package/react-router-hash-link
@@ -102,7 +119,7 @@ Write-up
     - https://react-icons.github.io/react-icons/
 - Date formatting
     - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#options
-- <textarea> resize option
+- textarea resize option
     - https://stackoverflow.com/questions/25567707/textarea-disable-resize-on-x-or-y
 - How to style an input field with type "file"
     - https://stackoverflow.com/questions/572768/styling-an-input-type-file-button

@@ -29,6 +29,7 @@
     all: unset;
     font-size: 4vw;
     text-decoration: none;
+    font-family: 'Vina Sans', cursive;
 }
 
 .home-link:hover {
